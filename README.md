@@ -1,2 +1,2 @@
-# spring-boot-with-gmail
-spring-boot-with-gmail
+# spring-boot-mail-gmail
+spring-boot-mail-gmail
