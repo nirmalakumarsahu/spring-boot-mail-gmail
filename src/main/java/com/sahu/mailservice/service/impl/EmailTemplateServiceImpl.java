@@ -20,6 +20,7 @@ public class EmailTemplateServiceImpl implements EmailTemplateService {
 
     @Override
     public EmailTemplateResponse addEmailTemplate(EmailTemplateRequest emailTemplateRequest, MultipartFile file) {
+        //Validate the Template file
         return null;
     }
 

@@ -1,8 +1,11 @@
 package com.sahu.mailservice.dto;
 
+import com.sahu.mailservice.validation.ValidEmailRequest;
+
 import java.util.List;
 import java.util.Map;
 
+@ValidEmailRequest
 public record EmailRequest(
         List<String> to,
         List<String> cc,
