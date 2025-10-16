@@ -1,7 +1,6 @@
 package com.sahu.mailservice.model;
 
 import com.sahu.mailservice.constant.EmailTemplateType;
-import com.sahu.mailservice.dto.EmailRequest;
 import com.sahu.mailservice.model.convert.StringListConverter;
 import jakarta.persistence.*;
 import lombok.*;
@@ -32,5 +31,6 @@ public class EmailTemplate {
     @Convert(converter = StringListConverter.class)
     @Column(name = "placeholders", columnDefinition = "TEXT")
     private List<String> placeholders;
+    private Boolean placeholderExists;
     private Boolean active;
 }

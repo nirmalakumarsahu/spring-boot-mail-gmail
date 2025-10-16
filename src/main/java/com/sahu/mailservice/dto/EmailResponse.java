@@ -6,5 +6,6 @@ import lombok.Builder;
 public record EmailResponse(
         String message,
         Boolean status
-) {
+)
+{
 }

@@ -10,4 +10,6 @@ public interface EmailTemplateService {
     EmailTemplateResponse addEmailTemplate(EmailTemplateRequest emailTemplateRequest, MultipartFile file);
 
     List<EmailTemplateResponse> getAllEmailTemplates();
+
+    void deleteEmailTemplate(Long id);
 }

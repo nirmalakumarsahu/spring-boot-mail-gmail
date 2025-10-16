@@ -5,6 +5,7 @@ import com.sahu.mailservice.dto.EmailRequest;
 import com.sahu.mailservice.dto.EmailResponse;
 import com.sahu.mailservice.service.SendEmailService;
 import jakarta.mail.MessagingException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.Objects;
 
 @Slf4j
 @RestController
@@ -27,18 +27,9 @@ public class EmailRestController {
     private final SendEmailService sendEmailService;
 
     @PostMapping(value = "/send")
-    public ResponseEntity<ApiResponse<EmailResponse>> sendEmail(@RequestPart EmailRequest emailRequest,
+    public ResponseEntity<ApiResponse<EmailResponse>> sendEmail(@Valid @RequestPart EmailRequest emailRequest,
                                                                 @RequestPart(required = false) List<MultipartFile> files)
     {
-
-        if (Objects.isNull(emailRequest)) {
-            return ApiResponse.failure(
-                    HttpStatus.BAD_REQUEST,
-                    "Mail request cannot be null",
-                    null
-            );
-        }
-
         try {
             EmailResponse emailResponse = sendEmailService.sendEmail(emailRequest, files);
             return ApiResponse.success(

@@ -13,7 +13,7 @@ public record EmailRequest(
         String subject,
         String body,
         boolean isHtml,
-        String templateId,
+        String templateName,
         Map<String, Object> templateModel
 ) {
 }

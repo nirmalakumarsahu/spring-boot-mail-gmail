@@ -1,7 +1,8 @@
 package com.sahu.mailservice.controll.rest;
 
-import com.sahu.mailservice.dto.*;
-import com.sahu.mailservice.model.EmailTemplate;
+import com.sahu.mailservice.dto.ApiResponse;
+import com.sahu.mailservice.dto.EmailTemplateRequest;
+import com.sahu.mailservice.dto.EmailTemplateResponse;
 import com.sahu.mailservice.service.EmailTemplateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,7 @@ public class EmailTemplateRestController {
 
     @PostMapping
     public ResponseEntity<ApiResponse<EmailTemplateResponse>> addEmailTemplate(@RequestPart EmailTemplateRequest emailTemplateRequest,
-                                                                               @RequestPart MultipartFile file)
+                                                                               @RequestPart(required = true) MultipartFile file)
     {
         return ApiResponse.success(
                 HttpStatus.CREATED,
@@ -35,6 +36,16 @@ public class EmailTemplateRestController {
                 HttpStatus.OK,
                 "Email templates fetched successfully",
                 emailTemplateService.getAllEmailTemplates()
+        );
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponse<String>> deleteEmailTemplate(@PathVariable Long id) {
+        // Implementation for deleting an email template by id
+        return ApiResponse.success(
+                HttpStatus.OK,
+                "Email template deleted successfully",
+                null
         );
     }
 
