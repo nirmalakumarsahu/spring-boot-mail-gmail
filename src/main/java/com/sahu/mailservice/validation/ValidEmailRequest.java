@@ -1,6 +1,5 @@
 package com.sahu.mailservice.validation;
 
-import com.sahu.mailservice.dto.EmailRequest;
 import jakarta.validation.Constraint;
 
 import java.lang.annotation.*;
